@@ -1,0 +1,197 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Resume</title> 
+    <style> 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 10px 2em 30px rgba(0, 0, 0, 0.3);
+            page-break-inside: avoid; /* Avoid page break inside container */
+        }
+
+        .header, .main {
+            page-break-inside: avoid; /* Avoid page break inside these elements */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .header h1,
+        .header h3 {
+            margin: 0; /* Remove margin for h1 and h3 */
+        }
+
+        .header h1 {
+            margin-bottom: 5px;
+        }
+
+        .header h3 {
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 5px;
+            page-break-inside: avoid; /* Avoid page break inside these sections */
+        }
+
+        .left h2, .right h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-decoration: underline;
+            color: #584d4d;
+        }
+
+        .left p, .right p, .left ul, .right ul {
+            margin-bottom: 8px;
+        }
+
+        .left ul li, .right ul li {
+            margin-bottom: 5px;
+        }
+
+        .btn1 {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            background-color: rgb(106, 233, 106);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff; /* Ensure background is white when printing */
+            }
+
+            .container {
+                box-shadow: none; /* Remove shadow on print */
+                border: none; /* Remove border on print */
+                page-break-inside: avoid; /* Avoid page break inside container */
+            }
+
+            .btn1 {
+                display: none; /* Hide print button when printing */
+            }
+        }
+    </style> 
+</head> 
+
+<body> 
+    <div class="container"> 
+        {% for resume in resumes %}
+        <div class="header"> 
+            <h1>{{resume.name}}</h1> 
+            <h3>{{resume.about}}</h3> 
+        </div> 
+        <div class="main"> 
+            <div class="left"> 
+                <h2>Personal Information</h2> 
+                <p><strong>Name :</strong> {{resume.name}}</p> 
+                <p><strong>Age :</strong> {{resume.age}} </p> 
+                <p><strong>Email :</strong> {{resume.email}}</p> 
+                <p><strong>Phone :</strong> +880-{{resume.phone}}</p> 
+                <h2>Skills</h2> 
+                <ul> 
+                    <li>{{resume.skill1}}</li> 
+                    <li>{{resume.skill2}}</li> 
+                    <li>{{resume.skill3}}</li> 
+                    <li>{{resume.skill4}}</li> 
+                    <li>{{resume.skill5}}</li> 
+                </ul> 
+                <h2>Education</h2> 
+                <h3>{{resume.degree1}} </h3> 
+                <p>{{resume.college1}}</p> 
+                <p> Year :{{resume.year1}}</p> 
+                <br> 
+                <h3>{{resume.degree2}} </h3> 
+                <p>{{resume.college2}}</p> 
+                <p> Year : {{resume.year2}}</p> 
+                <h3>{{resume.degree3}} </h3> 
+                <p>{{resume.college3}}</p> 
+                <p> Year : {{resume.year3}}</p> 
+                <h2>Languages</h2> 
+                <ul> 
+                    <li>{{resume.lang1}}</li> 
+                    <li>{{resume.lang2}}</li> 
+                    <li>{{resume.lang3}}</li> 
+                </ul> 
+            </div> 
+            <div class="right"> 
+                <h2>Projects</h2> 
+                <h3>{{resume.project1}}</h3> 
+                <p><strong>Duration :</strong> {{resume.durat1}}</p> 
+                <ul> 
+                    <li>{{resume.desc1}}</li> 
+                </ul> 
+                <br> 
+                <h3>{{resume.project2}}</h3> 
+                <p><strong>Duration :</strong> {{resume.durat2}}</p> 
+                <ul> 
+                    <li>{{resume.desc2}}</li> 
+                </ul> 
+                <h2>Work Experience</h2> 
+                <h3>{{resume.company1}}</h3> 
+                <p><strong>Position:</strong> {{resume.post1}}</p> 
+                <p><strong>Duration :</strong> {{resume.duration1}}</p> 
+                <ul> 
+                    <li>{{resume.lin11}}</li> 
+                </ul> 
+                <br> 
+                <h3>{{resume.company2}}</h3> 
+                <p><strong>Position: </strong>{{resume.post2}}</p> 
+                <p><strong>Duration</strong> {{resume.duration2}}</p> 
+                <ul> 
+                    <li>{{resume.lin21}}</li> 
+                </ul> 
+                <h2>Achievements :</h2> 
+                <ul> 
+                    <li>{{resume.ach1}}</li> 
+                    <li>{{resume.ach2}}</li> 
+                    <li>{{resume.ach3}}</li> 
+                </ul> 
+            </div> 
+        </div> 
+        {% endfor %}
+    </div> 
+    <button class="btn1" onclick="window.print()">Print PDF</button>
+</body> 
+
+</html>

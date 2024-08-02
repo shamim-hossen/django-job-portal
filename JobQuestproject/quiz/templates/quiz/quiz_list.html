@@ -1,0 +1,62 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .full-height {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-group {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    .mt-5 {
+        margin-top: 1rem !important; /* Adjust as needed */
+    }
+</style>
+{% endblock canstyle %}
+
+{% block emmain %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Topics</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="full-height">
+        <div class="container mt-5">
+            <h1 class="text-center" style="color: rgba(31,43,123,0.8)">Quiz Topics</h1>
+            <ul class="list-group mt-4">
+                {% for topic in topics %}
+                    <li class="list-group-item">
+                        <a href="{% url 'quiz_detail' topic.id %}">{{ topic.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock emmain %}

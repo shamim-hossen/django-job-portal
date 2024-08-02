@@ -1,0 +1,47 @@
+{% extends "employer/profilesec.html" %}
+{% load static %}
+
+{% block emprostyle %}
+<style>
+/* Custom styles for the profile update form */
+.customdiv {
+    background-color: #e6f7ff;
+    padding: 20px;
+    border-radius: 8px;
+}
+</style>
+{% endblock emprostyle %}
+
+{% block emprofiles %}
+<div class="container mt-5 customdiv">
+    <h1>Update Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="company_name">Company Name</label>
+            {{ form.company_name|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="website">Website</label>
+            {{ form.website|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="headline">Headline</label>
+            {{ form.headline|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="founded_date">Founded Date</label>
+            {{ form.founded_date|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            {{ form.category|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            {{ form.description|add_class:"form-control" }}
+        </div>
+        <button type="submit" class="btn btn-primary text-dark">Update Profile</button>
+    </form>
+</div>
+{% endblock emprofiles %}

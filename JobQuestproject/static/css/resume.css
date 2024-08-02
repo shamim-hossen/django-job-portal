@@ -1,0 +1,82 @@
+/* static/css/resume.css */
+body {
+   font-family: Arial, sans-serif;
+   margin: 20px;
+   background-color: #f4f4f4;
+}
+
+.resume-container {
+   max-width: 800px;
+   margin: auto;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   background-color: #fff;
+}
+
+.header {
+   text-align: center;
+   border-bottom: 2px solid #333;
+   padding-bottom: 20px;
+   margin-bottom: 20px;
+}
+
+.header h1 {
+   margin: 0;
+   color: #333;
+}
+
+.header p {
+   margin: 5px 0;
+   color: #666;
+}
+
+.section {
+   margin-bottom: 20px;
+}
+
+.section h2 {
+   border-bottom: 2px solid #333;
+   padding-bottom: 10px;
+   color: #555;
+}
+
+.section p, .section h3 {
+   margin: 5px 0;
+   padding: 5px;
+}
+
+.work-experience, .qualification, .skill {
+   padding: 10px;
+   margin: 10px 0;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+}
+
+strong {
+   color: #333;
+}
+
+.btn {
+   display: inline-block;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: #fff;
+   background-color: #4CAF50;
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 9px #999;
+}
+
+.btn:hover {background-color: #3e8e41}
+
+.btn:active {
+   background-color: #3e8e41;
+   box-shadow: 0 5px #666;
+   transform: translateY(4px);
+}

@@ -1,0 +1,24 @@
+{% extends "employer/profilesec.html" %}
+{% load static %}
+
+{% block emprostyle %}
+<style>
+/* Custom styles for the profile view */
+.customdiv {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+</style>
+{% endblock emprostyle %}
+
+{% block emprofiles %}
+<div class="container mt-5 customdiv">
+    <h1>{{ company_profile.company_name }}</h1>
+    <p><strong>Website:</strong> {{ company_profile.website }}</p>
+    <p><strong>Headline:</strong> {{ company_profile.headline }}</p>
+    <p><strong>Founded Date:</strong> {{ company_profile.founded_date }}</p>
+    <p><strong>Category:</strong> {{ company_profile.category }}</p>
+    <p><strong>Description:</strong> {{ company_profile.description }}</p>
+</div>
+{% endblock emprofiles %}

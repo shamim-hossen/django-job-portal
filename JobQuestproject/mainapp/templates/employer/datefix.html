@@ -1,0 +1,26 @@
+{% extends "employer/profilesec.html" %}
+
+{% block emprostyle %}
+<style>
+  .form-container {
+      min-width: 50vw;
+  }
+</style>
+{% endblock emprostyle %}
+
+{% block emprofiles %}
+
+    <div class="container mt-5">
+        <form action="{% url 'datefix' %}" method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fname">Select Interview date</label>
+                <input type="date" id="fname" name="date_fix" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please select a date.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock emprofiles %}

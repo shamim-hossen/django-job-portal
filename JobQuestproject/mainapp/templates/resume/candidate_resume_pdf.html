@@ -1,0 +1,141 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Resume - {{ candidate.user.username }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/price_rangs.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+            .me{
+                background: #95baeb;
+            }
+        </style>
+
+        {% block canstyle %}
+        {% endblock canstyle %}
+    </head>
+
+    <body>
+        <!-- Preloader Start -->
+        {% include "preloader.html" %}
+        
+        <!-- Navbar -->
+        {% include "candidate/cannav.html" %}
+
+        <div class="container-fluid me py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h2 class="text-center">Candidate Profile</h2>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Personal Information</h4>
+                                <p><strong>Username:</strong> {{ candidate.user.username }}</p>
+                                <p><strong>Gender:</strong> {{ candidate.gender }}</p>
+                                <p><strong>Date of Birth:</strong> {{ candidate.date_of_birth }}</p>
+                                <p><strong>Job Type:</strong> {{ candidate.job_type }}</p>
+                                <p><strong>Salary Type:</strong> {{ candidate.salary_type }}</p>
+                                <p><strong>Currency Type:</strong> {{ candidate.currency_type }}</p>
+                                <p><strong>Current Salary:</strong> {{ candidate.current_salary }}</p>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Work Experience</h4>
+                                {% for experience in work_experiences %}
+                                    <div class="mb-3">
+                                        <p><strong>Organization:</strong> {{ experience.organization_name }}</p>
+                                        <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+                                        <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+                                        <p><strong>Currently Working Here:</strong> {{ experience.currently_working_here }}</p>
+                                        <p><strong>Job Description:</strong> {{ experience.job_description }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Academic Qualifications</h4>
+                                {% for qualification in academic_qualifications %}
+                                    <div class="mb-3">
+                                        <p><strong>Institute:</strong> {{ qualification.institute_name }}</p>
+                                        <p><strong>Degree:</strong> {{ qualification.degree_name }}</p>
+                                        <p><strong>Grade:</strong> {{ qualification.grade }}</p>
+                                        <p><strong>Start Date:</strong> {{ qualification.start_date }}</p>
+                                        <p><strong>End Date:</strong> {{ qualification.end_date }}</p>
+                                        <p><strong>Description:</strong> {{ qualification.description }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title">Skills</h4>
+                                {% for skill in skills %}
+                                    <div class="mb-3">
+                                        <p><strong>Years of Experience:</strong> {{ skill.years_of_experience }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a href="{% url 'download_resume_pdf' candidate.id %}" class="btn btn-primary">Download this resume as PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        {% include "footer.html" %}
+
+        <!-- JS here -->
+        <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+        <script src="{% static './assets/js/price_rangs.js' %}"></script>
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+        <script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>
+    </body>
+</html>

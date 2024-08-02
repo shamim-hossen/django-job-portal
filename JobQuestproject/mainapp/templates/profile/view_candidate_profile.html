@@ -1,0 +1,110 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+<style>
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container2 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-section h3 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    color: #555;
+}
+
+.profile-section p {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.profile-section .experience, .profile-section .qualification, .profile-section .skill {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+strong {
+    color: #333;
+}
+
+</style>
+{% endblock canstyle %}
+{% block emmain %}
+    <br>
+<div class="container2">
+   <h2>Candidate Profile</h2><hr>
+   <div class="profile-section">
+       <h3>Personal Information</h3>
+       <p><strong>Username:</strong> {{ candidate.user.username }}</p>
+       <p><strong>Gender:</strong> {{ candidate.gender }}</p>
+       <p><strong>Date of Birth:</strong> {{ candidate.date_of_birth }}</p>
+       <p><strong>Job Type:</strong> {{ candidate.job_type }}</p>
+       <p><strong>Salary Type:</strong> {{ candidate.salary_type }}</p>
+       <p><strong>Currency Type:</strong> {{ candidate.currency_type }}</p>
+       <p><strong>Current Salary:</strong> {{ candidate.current_salary }}</p>
+   </div>
+
+   <!-- <div class="profile-section">
+       <h3>Work Experience</h3>
+       {% for experience in work_experiences %}
+           <div class="experience">
+               <p><strong>Organization:</strong> {{ experience.organization_name }}</p>
+               <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+               <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+               <p><strong>Currently Working Here:</strong> {{ experience.currently_working_here }}</p>
+               <p><strong>Job Description:</strong> {{ experience.job_description }}</p>
+           </div>
+       {% endfor %}
+   </div>
+
+   <div class="profile-section">
+       <h3>Academic Qualifications</h3>
+       {% for qualification in academic_qualifications %}
+           <div class="qualification">
+               <p><strong>Institute:</strong> {{ qualification.institute_name }}</p>
+               <p><strong>Degree:</strong> {{ qualification.degree_name }}</p>
+               <p><strong>Grade:</strong> {{ qualification.grade }}</p>
+               <p><strong>Start Date:</strong> {{ qualification.start_date }}</p>
+               <p><strong>End Date:</strong> {{ qualification.end_date }}</p>
+               <p><strong>Description:</strong> {{ qualification.description }}</p>
+           </div>
+       {% endfor %}
+   </div>
+
+   <div class="profile-section">
+       <h3>Skills</h3>
+       {% for skill in skills %}
+           <div class="skill">
+               <p><strong>Years of Experience:</strong> {{ skill.years_of_experience }}</p>
+           </div>
+       {% endfor %}
+   </div><br>
+   <div> -->
+
+   </div><br>
+</div>
+
+{% endblock emmain %}
+    

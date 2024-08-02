@@ -1,0 +1,54 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+
+{% endblock canstyle %}
+
+{% block emmain %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+}
+
+.full-height {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-height .profile-section {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+    </style>
+</head>
+<body>
+<div class="container full-height">
+    <div class="container mt-5 ">
+        <h2 class="text-center" style="color: rgba(31,43,123,0.8)">Quiz Result</h2>
+        <div class="card mt-4">
+            <div class="card-body ">
+                <h3 class="card-title">{{ topic.title }}</h3>
+                <p class="card-text">Total Questions: {{ total_questions }}</p>
+                <p class="card-text">Your Score: {{ score }} / {{ total_questions }}</p>
+                <p class="card-text">Percentage Score: {{ percentage_score }}%</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock emmain %}

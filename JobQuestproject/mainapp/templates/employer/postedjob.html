@@ -1,0 +1,40 @@
+{% extends "employer/profilesec.html" %}
+
+{% block emprofiles %}
+
+<h1 style="color: #1f2b7b; text-align: center;">My Posted Jobs</h1>
+<div class="container-fluid">
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-6">
+            <div class="card m-3">
+                <img src="{{ job.employer.profile_picture }}" class="card-img-top" alt="{{ job.title }}">
+                <div class="card-body">
+                    <h5 class="card-text">{{ job.job_title }}</h5>
+                    <p class="card-text"><strong>Industry:</strong> {{ job.industry }}</p>
+                    <p class="card-text"><strong>Application Deadline:</strong> {{ job.application_deadline }}</p>
+                    <p class="card-text"><strong>Gender Preference:</strong> {{ job.specific_gender }}</p>
+                    <p class="card-text"><strong>Job Type:</strong> {{ job.job_type }}</p>
+                    <p class="card-text"><strong>Salary Type:</strong> {{ job.salary_type }}</p>
+                    <p class="card-text"><strong>Salary:</strong> {{ job.salary }} {{ job.currency }}</p>
+                    <p class="card-text"><strong>Experience:</strong> {{ job.experience }} years</p>
+                    <p class="card-text"><strong>Job Skills:</strong> {{ job.job_skills }}</p>
+                    <p class="card-text"><strong>Number of Vacancies:</strong> {{ job.number_of_vacancies }}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'job_details' job.id %}" class="btn btn-primary m-0">View</a>
+                        <a href="{% url 'edit_job' job.id %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'delete_job' job.id %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'applicants' job.id %}" class="btn btn-info">Applicants</a>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p style="text-align: center; color: grey;">No jobs posted yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock emprofiles %}

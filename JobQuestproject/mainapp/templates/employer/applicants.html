@@ -1,0 +1,74 @@
+{% extends 'employer/profilesec.html' %}
+{% block emprostyle %}
+<style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #1f2b7b;
+      color: white;
+    }
+</style>
+{% endblock emprostyle %}
+
+{% block emprofiles %}
+    
+<div class="container">
+    <h1 style="text-align: center;">List of applicants of</h1>
+    <h3 style="text-align: center;">{{ job.job_title }}</h3>
+    
+    <table id="customers">
+      <tr>
+        <th>ID</th>
+        <th>Applicant name</th>
+        <th>Applied job</th>
+        <th>Skills</th>
+        <th>Cover Letter</th>
+        <th>Resume</th>
+        <th>Action</th>
+        <th>Current status</th>
+      </tr>
+      {% for applicant in applicants %}
+      <tr>
+          <td>{{ applicant.id }}</td>
+          <td>{{ applicant.applicant.username }}</td>
+          <td>{{ applicant.job.job_title }}</td>
+          <td>{{ applicant.skills }}</td>
+          <td>{{ applicant.cover_letter }}</td>
+          <td>
+              {% if applicant.resume %}
+                  <a style="color: black;" href="{{ applicant.resume.url }}" target="_blank">{{ applicant.resume.url }}</a>
+              {% else %}
+                  No resume uploaded
+              {% endif %}
+          </td>
+          <td>
+              <a href="{% url 'jobreject' applicant.id %}" class='text-primary'>Reject</a><br>
+              <a href="{% url 'jobcallinterview' applicant.id %}" class='text-primary'>Call for interview</a>
+          </td>
+          <td>{{ applicant.status }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+          <td colspan="8" style="text-align: center;">No applicants found</td>
+      </tr>
+      {% endfor %}
+    </table>
+</div>
+
+{% endblock emprofiles %}

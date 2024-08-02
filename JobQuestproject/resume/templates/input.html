@@ -1,0 +1,277 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block emmain %}
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            text-decoration: none; /* Remove text decoration globally */
+        } 
+        .form-container { 
+            width: 80%; 
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        } 
+        .form-group { 
+            margin-bottom: 15px; 
+        } 
+        .form-group label { 
+            font-weight: bold; 
+        } 
+        .form-control { 
+            border-radius: 5px; 
+        } 
+        .om { 
+            display: flex; 
+            gap: 10px; 
+        } 
+        .ed { 
+            display: flex; 
+            gap: 4%; 
+        } 
+        .com { 
+            display: flex; 
+            gap: 7%; 
+        } 
+        .op { 
+            margin: 10px; 
+        } 
+        .btn1 { 
+            margin-left: 43%; 
+            padding: 15px 25px; 
+            font-size: 15px; 
+            font-weight: bold; 
+            background-color: rgb(35, 144, 208); 
+            border-radius: 10px; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="container">
+        <div class="form-container"> 
+            <h1 class="text-center" style="color:rgba(31,43,123,0.8); font-size:40px;">Resume Generator</h1><hr> 
+            <form action="{% url 'resume_inp' %}" method="post" class="mt-4"> 
+                {% csrf_token %} 
+
+                <!-- Personal Information -->
+                <div class="form-group"> 
+                    <label for="name">Name:</label> 
+                    <input type="text" class="form-control" id="name" name="name"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="about">About:</label> 
+                    <input type="text" class="form-control" id="about" name="about"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="age">Age:</label> 
+                    <input type="text" class="form-control" id="age" name="age"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="email">Email:</label> 
+                    <input type="text" class="form-control" id="email" name="email"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="phone">Phone:</label> 
+                    <input type="text" class="form-control" id="phone" name="phone"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="skills">Skills:</label> 
+                    <div class="om"> 
+                        <input type="text" class="form-control" id="skills1" name="skill1"> 
+                        <input type="text" class="form-control" id="skills2" name="skill2"> 
+                        <input type="text" class="form-control" id="skills3" name="skill3"> 
+                        <input type="text" class="form-control" id="skills4" name="skill4"> 
+                        <input type="text" class="form-control" id="skills5" name="skill5"> 
+                    </div> 
+                </div> 
+
+                <!-- Education Section -->
+                <div class="form-group"> 
+                    <label for="education1">Education 1:</label> 
+                </div> 
+                <div class="ed"> 
+                    <div class="form-group"> 
+                        <label for="degree1">Degree:</label> 
+                        <input type="text" class="form-control" id="degree1" name="degree1"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="college1">College:</label> 
+                        <input type="text" class="form-control" id="college1" name="college1"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="year1">Year:</label> 
+                        <input type="text" class="form-control" id="year1" name="year1"> 
+                    </div> 
+                </div> 
+
+                <!-- Education 2 -->
+                <div class="form-group"> 
+                    <label for="education2">Education 2:</label> 
+                </div> 
+                <div class="ed"> 
+                    <div class="form-group"> 
+                        <label for="degree2">Degree:</label> 
+                        <input type="text" class="form-control" id="degree2" name="degree2"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="college2">College:</label> 
+                        <input type="text" class="form-control" id="college2" name="college2"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="year2">Year:</label> 
+                        <input type="text" class="form-control" id="year2" name="year2"> 
+                    </div> 
+                </div> 
+
+                <!-- Education 3 -->
+                <div class="form-group"> 
+                    <label for="education3">Education 3:</label> 
+                </div> 
+                <div class="ed"> 
+                    <div class="form-group"> 
+                        <label for="degree3">Degree:</label> 
+                        <input type="text" class="form-control" id="degree3" name="degree3"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="college3">College:</label> 
+                        <input type="text" class="form-control" id="college3" name="college3"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="year3">Year:</label> 
+                        <input type="text" class="form-control" id="year3" name="year3"> 
+                    </div> 
+                </div> 
+
+                <!-- Languages -->
+                <div class="form-group"> 
+                    <label for="languages">Languages:</label> 
+                    <div class="om"> 
+                        <input type="text" class="form-control" id="language1" name="lang1"> 
+                        <input type="text" class="form-control" id="language2" name="lang2"> 
+                        <input type="text" class="form-control" id="language3" name="lang3"> 
+                    </div> 
+                </div> 
+
+                <!-- Project 1 -->
+                <div class="form-group"> 
+                    <label for="project1">Project 1:</label> 
+                </div> 
+                <div class="com"> 
+                    <div class="form-group"> 
+                        <label for="projectTitle1">Project Title:</label> 
+                        <input type="text" class="form-control" id="projectTitle1" name="project1"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="duration1">Duration:</label> 
+                        <input type="text" class="form-control" id="duration1" name="durat1"> 
+                    </div> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="description1">Description:</label> 
+                    <input type="text" class="form-control" id="description1" name="desc1"> 
+                </div> 
+
+                <!-- Project 2 -->
+                <div class="form-group"> 
+                    <label for="project2">Project 2:</label> 
+                </div> 
+                <div class="com"> 
+                    <div class="form-group"> 
+                        <label for="projectTitle2">Project Title:</label> 
+                        <input type="text" class="form-control" id="projectTitle2" name="project2"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="duration2">Duration:</label> 
+                        <input type="text" class="form-control" id="duration2" name="durat2"> 
+                    </div> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="description2">Description:</label> 
+                    <input type="text" class="form-control" id="description2" name="desc2"> 
+                </div> 
+
+                <!-- Experience 1 -->
+                <div class="form-group"> 
+                    <label for="experience1">Experience 1:</label> 
+                </div> 
+                <div class="com"> 
+                    <div class="form-group"> 
+                        <label for="companyName1">Company Name:</label> 
+                        <input type="text" class="form-control" id="companyName1" name="company1"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="post1">Post:</label> 
+                        <input type="text" class="form-control" id="post1" name="post1"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="duration1">Duration:</label> 
+                        <input type="text" class="form-control" id="duration1" name="duration1"> 
+                    </div> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="lin11">Description:</label> 
+                    <input type="text" class="form-control" id="lin11" name="lin11"> 
+                </div> 
+
+                <!-- Experience 2 -->
+                <div class="form-group"> 
+                    <label for="experience2">Experience 2:</label> 
+                </div> 
+                <div class="com"> 
+                    <div class="form-group"> 
+                        <label for="companyName2">Company Name:</label> 
+                        <input type="text" class="form-control" id="companyName2" name="company2"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="post2">Post:</label> 
+                        <input type="text" class="form-control" id="post2" name="post2"> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="duration2">Duration:</label> 
+                        <input type="text" class="form-control" id="duration2" name="duration2"> 
+                    </div> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="lin21">Description:</label> 
+                    <input type="text" class="form-control" id="lin21" name="lin21"> 
+                </div> 
+
+                <!-- Achievements -->
+                <div class="form-group"> 
+                    <label for="achievements">Achievements:</label> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="firstAchievement">First:</label> 
+                    <input type="text" class="form-control" id="firstAchievement" name="ach1"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="secondAchievement">Second:</label> 
+                    <input type="text" class="form-control" id="secondAchievement" name="ach2"> 
+                </div> 
+                <div class="form-group"> 
+                    <label for="thirdAchievement">Third:</label> 
+                    <input type="text" class="form-control" id="thirdAchievement" name="ach3"> 
+                </div> 
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn1">Submit</button> 
+            </form> 
+        </div> 
+    </div> 
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body> 
+</html>
+{% endblock %}

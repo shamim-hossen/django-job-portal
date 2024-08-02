@@ -1,0 +1,48 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+
+{% endblock canstyle %}
+
+{% block emmain %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ topic.title }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="full-height">
+        <div class="container mt-5"><br>
+            <h2 class="text-center" style="color: rgba(31,43,123,0.8)">Quiz Topic : {{ topic.title }}</h2>
+            <form action="{% url 'quiz_result' topic.id %}" method="post" class="mt-4">
+                {% csrf_token %}
+                {% for question in questions %}
+                    {% with forloop.counter as question_number %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p><strong>{{ question_number }}. {{ question.text }}</strong></p>
+                                {% for answer in question.answers.all %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" id="answer_{{ answer.id }}">
+                                        <label class="form-check-label" for="answer_{{ answer.id }}">
+                                            {{ answer.option_letter }}. {{ answer.text }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-block">Submit Quiz</button>
+            </form><br><br>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock emmain %}

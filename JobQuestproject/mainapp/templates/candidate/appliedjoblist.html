@@ -1,0 +1,59 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+<style>
+    .container {
+        min-height: 100vh; /* Set the container to at least full viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .table-responsive {
+        flex: 1; /* Make the table container fill the remaining space */
+        overflow-y: auto; /* Allow scrolling if content exceeds container height */
+    }
+
+    .table {
+        margin-bottom: 0; /* Remove bottom margin for neat appearance */
+    }
+</style>
+{% endblock canstyle %}
+
+{% block emmain %}
+<div class="container">
+    <h1 style="color: rgba(31,43,123,0.8); text-align: center;">Applied Job</h1>
+    <div class="table-responsive bg-info">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Job title</th>
+                    <th scope="col">Industry</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in appliedjobs %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ job.job.job_title }}</td>
+                    <td>{{ job.job.industry }}</td>
+                    <td>{{ job.job.salary }}</td>
+                    <td>{{ job.status }}</td>
+                    <td>
+                        <a href="" class="btn btn-primary">Undo Apply</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No Jobs found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock emmain %}

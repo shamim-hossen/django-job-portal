@@ -1,0 +1,63 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block emmain %}
+<div class="container mt-5">
+    <h2 class="text-center">Candidate Profile</h2>
+    <div class="profile-section mt-4">
+        <h3>Personal Information</h3>
+        <p><strong>Username:</strong> {{ candidate.user.username }}</p>
+        <p><strong>Gender:</strong> {{ candidate.gender }}</p>
+        <p><strong>Date of Birth:</strong> {{ candidate.date_of_birth }}</p>
+        <p><strong>Job Type:</strong> {{ candidate.job_type }}</p>
+        <p><strong>Salary Type:</strong> {{ candidate.salary_type }}</p>
+        <p><strong>Currency Type:</strong> {{ candidate.currency_type }}</p>
+        <p><strong>Current Salary:</strong> {{ candidate.current_salary }}</p>
+    </div>
+
+    <div class="profile-section mt-4">
+        <h3>Work Experience</h3>
+        {% for experience in work_experiences %}
+            <div class="experience card mb-3">
+                <div class="card-body">
+                    <p><strong>Organization:</strong> {{ experience.organization_name }}</p>
+                    <p><strong>Start Date:</strong> {{ experience.start_date }}</p>
+                    <p><strong>End Date:</strong> {{ experience.end_date }}</p>
+                    <p><strong>Currently Working Here:</strong> {{ experience.currently_working_here }}</p>
+                    <p><strong>Job Description:</strong> {{ experience.job_description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="profile-section mt-4">
+        <h3>Academic Qualifications</h3>
+        {% for qualification in academic_qualifications %}
+            <div class="qualification card mb-3">
+                <div class="card-body">
+                    <p><strong>Institute:</strong> {{ qualification.institute_name }}</p>
+                    <p><strong>Degree:</strong> {{ qualification.degree_name }}</p>
+                    <p><strong>Grade:</strong> {{ qualification.grade }}</p>
+                    <p><strong>Start Date:</strong> {{ qualification.start_date }}</p>
+                    <p><strong>End Date:</strong> {{ qualification.end_date }}</p>
+                    <p><strong>Description:</strong> {{ qualification.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="profile-section mt-4">
+        <h3>Skills</h3>
+        {% for skill in skills %}
+            <div class="skill card mb-3">
+                <div class="card-body">
+                    <p><strong>Years of Experience:</strong> {{ skill.years_of_experience }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="download-link">
+      <a href="{% url 'download_resume_pdf' candidate.id %}">Download this resume as PDF</a>
+  </div>
+</div>
+{% endblock %}

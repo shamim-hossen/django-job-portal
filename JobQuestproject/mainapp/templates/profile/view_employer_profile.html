@@ -1,0 +1,88 @@
+{% extends "employer/profilesec.html" %}
+
+{% block emprostyle %}
+<style>
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.a {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.d {
+    text-align: center;
+    color: #333;
+}
+
+.b {
+    margin-bottom: 20px;
+}
+
+.b c {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    color: #555;
+}
+
+.b e {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.b .social-network {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+strong {
+    color: #333;
+}
+         
+</style>          
+{% endblock emprostyle %}
+
+
+{% block emprofiles %}
+
+<div class="container a">
+   <h2 class='d'>Employer Profile</h2><hr>
+   <div class="profile-section b">
+       <h3 class='c'>Company Information</h3>
+       <p class='e'><strong>Company Name:</strong> {{ company_profile.company_name }}</p>
+       <p class='e'><strong>Website:</strong> <a href="{{ company_profile.website }}" target="_blank">{{ company_profile.website }}</a></p>
+       <p class='e'><strong>Headline:</strong> {{ company_profile.headline }}</p>
+       <p class='e'><strong>Founded Date:</strong> {{ company_profile.founded_date }}</p>
+       <p class='e'><strong>Category:</strong> {{ company_profile.category }}</p>
+       <p class='e'><strong>Description:</strong> {{ company_profile.description }}</p>
+   </div>
+
+   <div class="profile-section b">
+       <h3 class='c' >Contact Information</h3>
+       <p class='e'><strong>Phone:</strong> {{ contact_information.phone }}</p>
+       <p class='e'><strong>Email:</strong> {{ contact_information.email }}</p>
+       <p class='e'><strong>Full Address:</strong> {{ contact_information.full_address }}</p>
+       <p class='e'><strong>Video:</strong> {% if contact_information.video %}<a href="{{ contact_information.video }}" style="color: black; text-decoration: underline;" target="_blank">Watch Video</a>{% else %}No video{% endif %}</p>
+   </div>
+
+   <!-- <div class="profile-section b">
+       <h3 class='c'>Social Networks</h3>
+       {% for network in social_networks %}
+           <div class="social-network">
+               <p class='e'><strong>Platform:</strong> {{ network.platform }}</p> <br>
+               <p class='e'><strong>URL:</strong> <a href="{{ network.url }}" style="color: black; text-decoration: underline;" target="_blank">{{ network.url }}</a></p>
+           </div>
+       {% endfor %}
+   </div>
+</div> -->
+{% endblock emprofiles %}

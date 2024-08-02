@@ -1,0 +1,82 @@
+{% extends 'candidate/canprofile.html' %}
+
+{% block canstyle %}
+<style>
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+form h2 {
+    text-align: center;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+</style>
+{% endblock canstyle %}
+{% block emmain %}
+<br>
+<form method="POST">
+    {% csrf_token %}
+    
+    <h2>Update Profile</h2><hr>
+    {{ candidate_form.as_p }}
+    
+    <h3>Work Experience</h3>
+    {{ work_experience_formset.management_form }}
+    {% for form in work_experience_formset %}
+        {{ form.as_p }}
+    {% endfor %}
+    
+    <!-- <h3>Academic Qualifications</h3>
+    {{ academic_qualification_formset.management_form }}
+    {% for form in academic_qualification_formset %}
+        {{ form.as_p }}
+    {% endfor %}
+    
+    <h3>Skills </h3>
+    {{ skill_formset.management_form }}
+    {% for form in skill_formset %}
+        {{ form.as_p }}
+    {% endfor %}
+     -->
+    <button type="submit">Update Profile</button>
+</form>
+<br>
+{% endblock emmain %}
+    
